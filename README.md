@@ -32,8 +32,8 @@ This API manages processed emails, developed to store and analyze email content 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/username/repository-name.git
-   cd repository-name
+   git clone https://github.com/brunofullstack/EmailProcessor.git
+   cd EmailProcessor
    ```
 
 2. Install the dependencies:
