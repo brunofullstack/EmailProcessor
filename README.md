@@ -9,7 +9,6 @@ This API manages processed emails, developed to store and analyze email content 
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Configuration](#configuration)
-    - [SendGrid Configuration](#sendgrid-configuration)
     - [Authentication Configuration](#authentication-configuration)
   - [API Endpoints](#api-endpoints)
     - [Authentication](#authentication)
@@ -72,14 +71,6 @@ This API manages processed emails, developed to store and analyze email content 
    ```
 
 ## Configuration
-
-### SendGrid Configuration
-
-1. Set up SendGrid to forward received emails to your server's webhook.
-
-2. In the SendGrid dashboard, go to "Settings" > "Mail Settings" > "Inbound Parse".
-
-3. Add a domain and set the webhook URL to your email receiving endpoint.
 
 ### Authentication Configuration
 

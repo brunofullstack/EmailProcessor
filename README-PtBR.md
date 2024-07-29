@@ -68,14 +68,6 @@ Esta é a API para gerenciamento de e-mails processados, desenvolvida para armaz
 
 ## Configuração
 
-### Configuração do SendGrid
-
-1. Configure o SendGrid para enviar e-mails recebidos para o webhook do seu servidor.
-
-2. No painel do SendGrid, vá para "Settings" > "Mail Settings" > "Inbound Parse".
-
-3. Adicione um domínio e configure o URL do webhook para o seu endpoint de recepção de e-mails.
-
 ### Configuração de Autenticação
 
 Este projeto utiliza Laravel Sanctum para autenticação via API. Certifique-se de configurar corretamente os middlewares e o sistema de tokens.
