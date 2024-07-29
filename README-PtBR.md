@@ -8,6 +8,7 @@ Esta é a API para gerenciamento de e-mails processados, desenvolvida para armaz
 - [Requisitos](#requisitos)
 - [Instalação](#instalação)
 - [Configuração](#configuração)
+- [Processamento de E-mails](#processamento-de-e-mails)
 - [Endpoints da API](#endpoints-da-api)
 - [Autenticação](#autenticação)
 - [Testando a API](#testando-a-api)
@@ -20,14 +21,13 @@ Esta é a API para gerenciamento de e-mails processados, desenvolvida para armaz
 - Composer
 - MySQL ou outro banco de dados suportado
 - Laravel 8.x
-- SendGrid (para recebimento de e-mails)
 
 ## Instalação
 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/**brunofullstack**/EmailProcessor.git
+   git clone https://github.com/brunofullstack/EmailProcessor.git
    cd EmailProcessor
    ```
 
@@ -71,6 +71,25 @@ Esta é a API para gerenciamento de e-mails processados, desenvolvida para armaz
 ### Configuração de Autenticação
 
 Este projeto utiliza Laravel Sanctum para autenticação via API. Certifique-se de configurar corretamente os middlewares e o sistema de tokens.
+
+## Processamento de E-mails
+
+Para processar e extrair o texto simples dos e-mails armazenados na base de dados, você pode utilizar o comando Artisan `emails:process`. Esse comando busca todos os e-mails que ainda não tiveram o texto simples extraído (onde `raw_text` é nulo) e realiza a extração e armazenamento do texto simples.
+
+### Executando o Comando
+
+Para processar os e-mails, execute o seguinte comando no terminal:
+
+```bash
+php artisan emails:process
+```
+
+### Como Funciona
+
+1. **Busca de E-mails:** O comando recupera todos os e-mails na tabela `successful_emails` onde o campo `raw_text` é nulo.
+2. **Extração de Texto Simples:** Utiliza a biblioteca `\PhpMimeMailParser\Parser` para analisar o conteúdo bruto do e-mail e extrair o texto simples.
+3. **Atualização da Base de Dados:** O texto simples extraído é salvo no campo `raw_text` do e-mail correspondente na base de dados.
+4. **Notificação:** Uma mensagem é exibida no terminal indicando que os e-mails foram processados com sucesso.
 
 ## Endpoints da API
 
@@ -154,3 +173,6 @@ Se você deseja contribuir para este projeto, por favor, envie um pull request o
 ## Licença
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
+```
+
+Essa seção adicionada explica o processo de extração de texto simples de e-mails armazenados no sistema e como executar o comando necessário para esse processamento.
