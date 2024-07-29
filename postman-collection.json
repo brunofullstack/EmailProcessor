@@ -1,0 +1,168 @@
+{
+    "info": {
+      "name": "Successful Emails API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Authenticate",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"email\":\"user@example.com\", \"password\":\"your_password\", \"device_name\":\"your_device\"}"
+          },
+          "url": {
+            "raw": "{{base_url}}/sanctum/token",
+            "host": ["{{base_url}}"],
+            "path": ["sanctum", "token"]
+          }
+        }
+      },
+      {
+        "name": "Create User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/users",
+            "host": [
+              "{{base_url}}"
+            ],
+            "path": [
+              "api",
+              "users"
+            ]
+          },
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}"
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Create Email",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"affiliate_id\": 1,\n    \"envelope\": \"Envelope data\",\n    \"from\": \"sender@example.com\",\n    \"subject\": \"Test Subject\",\n    \"dkim\": \"DKIM data\",\n    \"SPF\": \"SPF data\",\n    \"spam_score\": 0.5,\n    \"email\": \"Raw email content...\",\n    \"raw_text\": \"Extracted plain text content...\",\n    \"sender_ip\": \"192.168.1.1\",\n    \"to\": \"recipient@example.com\",\n    \"timestamp\": 1633072800\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/emails",
+            "host": ["{{base_url}}"],
+            "path": ["api", "emails"]
+          }
+        }
+      },
+      {
+        "name": "Get Email by ID",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/emails/:id",
+            "host": ["{{base_url}}"],
+            "path": ["emails", ":id"]
+          }
+        }
+      },
+      {
+        "name": "Update Email",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"subject\": \"Updated Subject\",\n    \"raw_text\": \"Updated plain text content...\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/emails/{{id}}",
+            "host": ["{{base_url}}"],
+            "path": ["api", "emails", "{{id}}"]
+          }
+        }
+      },
+      {
+        "name": "Get All Emails",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/emails",
+            "host": ["{{base_url}}"],
+            "path": ["emails"]
+          }
+        }
+      },
+      {
+        "name": "Delete Email",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/emails/:id",
+            "host": ["{{base_url}}"],
+            "path": ["emails", ":id"]
+          }
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost/api"
+      },
+      {
+        "key": "token",
+        "value": ""
+      }
+    ]
+  }
+  
