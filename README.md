@@ -167,7 +167,3 @@ If you want to contribute to this project, please submit a pull request or open 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-Feel free to adjust the `README.md` as needed to better fit the specifics of your project.
