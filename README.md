@@ -27,7 +27,7 @@ This is the API for managing processed emails, developed to store and analyze em
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/**brunofullstack**/EmailProcessor.git
+   git clone https://github.com/brunofullstack/EmailProcessor.git
    cd EmailProcessor
    ```
 
